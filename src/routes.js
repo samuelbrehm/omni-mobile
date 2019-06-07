@@ -3,11 +3,13 @@
  */
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import Welcome from '~/pages/Welcome';
+import Main from '~/pages/Main';
+import SignIn from '~/pages/SignIn';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Welcome,
+    SignIn,
+    Main,
   }),
 );
 
