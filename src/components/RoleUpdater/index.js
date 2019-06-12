@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import MembersActions from '~/store/ducks/members';
 
 import Modal from '~/components/Modal';
+import Can from '~/components/Can';
 
 import styles from './styles';
 
