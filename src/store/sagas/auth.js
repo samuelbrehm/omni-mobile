@@ -1,4 +1,6 @@
 import { call, put, select } from 'redux-saga/effects';
+import { ToastActionsCreators } from 'react-native-redux-toast';
+
 import { AsyncStorage } from 'react-native';
 
 import api from '~/services/api';
@@ -29,12 +31,10 @@ export function* signIn({ email, password }) {
 
     yield call([AsyncStorage, 'setItem'], '@Omni:token', response.data.token);
 
-    console.tron.log(response.data.token);
-
     yield put(AuthActions.signInSuccess(response.data.token));
     NavigationService.navigate('Main');
   } catch (err) {
-    console.tron.log('ERRO');
+    yield put(ToastActionsCreators.displayError('Credenciais inválidas'));
   }
 }
 
@@ -47,7 +47,7 @@ export function* signUp({ name, email, password }) {
     yield put(AuthActions.signInSuccess(response.data.token));
     // yield put(push('/'));
   } catch (err) {
-    console.tron.log('ERRO');
+    yield put(ToastActionsCreators.displayError('Erro ao criar usuário'));
   }
 }
 
